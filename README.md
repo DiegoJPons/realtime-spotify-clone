@@ -1,12 +1,42 @@
-### **Real-Time Spotify Clone**
+# Spotify Clone
 
-**The Challenge:** Engineering a high-performance streaming architecture capable of handling real-time data synchronization and low-latency audio playback. This project focused on the complexities of maintaining a persistent connection between the client and server to enable live user activity tracking and synchronized playback controls across multiple sessions.
+A full-stack, Spotify-inspired music app with an **Express** API and **MongoDB** for users, songs, albums, stats, and chat messages. Media uploads go through **Cloudinary**. Sign-in is handled with **Clerk** (OAuth).
 
-**Technical Architecture & "The Craft":**
-* **Real-Time Bi-Directional Communication:** Integrated **WebSockets** to facilitate instant data exchange between the client and server. This allowed for features like live "Now Playing" updates and synchronized playback across different devices.
-* **Low-Latency Audio Streaming:** Optimized frontend audio handling to ensure seamless transitions between tracks, implementing custom buffers to prevent playback interruptions during network fluctuations.
-* **Full-Stack State Synchronization:** Leveraged the **MERN stack** (MongoDB, Express, React, Node.js) to manage a complex global state, ensuring that user libraries, playlists, and playback positions remained consistent across the entire application.
-* **Dynamic Content Discovery:** Developed a robust search and filtering engine that allowed users to navigate large media catalogs with sub-second response times, utilizing optimized database indexing in **MongoDB**.
-* **Scalable Activity Tracking:** Built a backend telemetry system to monitor and record user listening habits in real-time, providing the data foundation for personalized "Recent Activity" feeds.
+The client is **React** and **TypeScript** (Vite, Tailwind CSS), with a home feed, album pages, a persistent music player, real-time **chat** (Socket.IO), and an **admin** dashboard for songs and albums.
 
-> **Technical Decision Highlight:** "The primary technical hurdle was ensuring that real-time features, like seeing what friends are listening to, didn't degrade application performance. I chose to implement a Pub/Sub architecture via WebSockets. By offloading these updates to a dedicated event-driven stream rather than traditional API polling, I significantly reduced server overhead and achieved the near-instant responsiveness expected of a modern social music platform."
+---
+
+## Features
+
+- **Listen & browse** — Featured, Made For You, and Trending sections; album detail routes and a shared playback queue.
+- **Player** — Queue and controls backed by client state (Zustand).
+- **Chat** — Authenticated real-time messaging over Socket.IO.
+- **Admin** — Dashboard stats and tabs to manage songs and albums (uploads via Cloudinary); access gated by admin email.
+- **Layout** — Dark, streaming-style UI with a main shell and navigation.
+
+---
+
+## Tech stack
+
+| Area | Technologies |
+|------|----------------|
+| Frontend | React 19, TypeScript, Vite, Tailwind CSS, Radix UI, Zustand, React Router, Clerk, Socket.IO client, Axios |
+| Backend | Node.js, Express, Mongoose, Clerk, Socket.IO, Cloudinary, node-cron |
+| Data | MongoDB |
+
+---
+
+## Project structure
+
+```
+frontend/     React SPA
+backend/      REST API + Socket.IO
+```
+
+The repository root includes scripts to build the client and run the API as a single process for hosting.
+
+---
+
+## Note
+
+This project is for learning and portfolio use and is not affiliated with Spotify.
